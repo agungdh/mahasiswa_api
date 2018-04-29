@@ -1,8 +1,12 @@
 <?php
-class M_mahasiswa extends CI_Model{	 
+class M_welcome extends CI_Model{	 
     public function __construct()
     {
         parent::__construct();
+    }
+
+    function ambil() {
+        return $this->db->get('mahasiswa')->result();
     }
 
     function tambah($data) {
@@ -10,8 +14,7 @@ class M_mahasiswa extends CI_Model{
         return $this->db->insert_id();
     }
 
-    function ambil_id($id) {
-        $where['id'] = $id;
+    function ambil_where($where) {
         return $this->db->get_where('mahasiswa', $where)->row();
     }
 
